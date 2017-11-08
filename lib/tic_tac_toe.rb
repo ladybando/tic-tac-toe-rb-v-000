@@ -27,6 +27,14 @@ def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
+  end
+end
+
 def input_to_index(player_input)
   player_input.to_i - 1
 end
@@ -67,18 +75,6 @@ def current_player(board)
     return "X"
   else
     return "O"
-  end
-end
-
-def won?(board)
-  WIN_COMBINATIONS.detect do |win_comb|
-    win_index_1 = win_comb[0]
-    win_index_2 = win_comb[1]
-    win_index_3 = win_comb[2]
-    position_1 = board[win_index_1]
-    position_2 = board[win_index_2]
-    position_3 = board[win_index_3]
-    position_1 == position_2 && position_2 == position_3 && position_1 != " "
   end
 end
 
