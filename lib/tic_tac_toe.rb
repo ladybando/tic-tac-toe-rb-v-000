@@ -43,6 +43,10 @@ def draw?(board)
   !won?(board) && full?(board)
 end
 
+def over?(board)
+  won?(board) || draw?(board)
+end
+
 def input_to_index(player_input)
   player_input.to_i - 1
 end
