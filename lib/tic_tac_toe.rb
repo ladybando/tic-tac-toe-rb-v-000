@@ -43,6 +43,10 @@ def draw?(board)
   !won?(board) && full?(board)
 end
 
+def input_to_index(player_input)
+  player_input.to_i - 1
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
@@ -53,10 +57,6 @@ def turn(board)
   else
     turn(board)
   end
-end
-
-def input_to_index(player_input)
-  player_input.to_i - 1
 end
 
 def move(board, index, char = "X")
@@ -65,18 +65,6 @@ end
 
 def position_taken?(board, index)
   board[index] != " "
-end
-
-def turn(board)
-  puts "Please enter 1-9:"
-  input = gets.strip
-  index = input_to_index(input)
-  if valid_move?(board, index)
-    move(board, index)
-    display_board(board)
-  else
-    turn(board)
-  end
 end
 
 def turn_count(board)
