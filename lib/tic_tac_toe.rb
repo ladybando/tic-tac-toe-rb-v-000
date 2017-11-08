@@ -39,6 +39,10 @@ def full?(board)
   board.all?{|token| token == "X" || token == "O"}
 end
 
+def draw?(board)
+  !won?(board) && full?(board)
+end
+
 def input_to_index(player_input)
   player_input.to_i - 1
 end
@@ -82,14 +86,6 @@ def current_player(board)
   end
 end
 
-def draw?(board)
-  if full?(board) && !won?(board)
-    return true
-  else
-    return false
-  end
-end
-#
 def over?(board)
   if draw?(board) || won?(board) || full?(board)
     return true
