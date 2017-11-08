@@ -3,6 +3,18 @@ WIN_COMBINATIONS= [
   [2,4,6], [0,4,8],
   [0,3,6], [1,4,7], [2,5,8]
 ]
+
+def play(board)
+  while !over?(board) do
+      turn(board)
+  end
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  else draw?(board)
+    puts "Cat's Game!"
+  end
+end
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -96,16 +108,5 @@ end
 def winner(board)
   if(over?(board) && won?(board))
     return board[won?(board)[0]]
-  end
-end
-
-def play(board)
-  while !over?(board) do
-      turn(board)
-  end
-  if won?(board)
-    puts "Congratulations #{winner(board)}!"
-  else draw?(board)
-    puts "Cat's Game!"
   end
 end
