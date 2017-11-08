@@ -35,6 +35,10 @@ def won?(board)
   end
 end
 
+def full?(board)
+  board.all?{|token| token == "X" || token == "O"}
+end
+
 def input_to_index(player_input)
   player_input.to_i - 1
 end
@@ -76,13 +80,6 @@ def current_player(board)
   else
     return "O"
   end
-end
-
-def full?(board)
-  theboard = board.select do |check|
-    check == "X" || check == "O"
-  end
-    theboard.size == board.size
 end
 
 def draw?(board)
